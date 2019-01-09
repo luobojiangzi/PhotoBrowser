@@ -28,7 +28,8 @@
 
 static NSString *PhotoBrowserViewCellRI = @"PhotoBrowserViewCellRI";
 
-#define imageRowCount 5
+//一组展示的个数
+#define imageRowCount 4
 
 @implementation PhotoBrowserView
 

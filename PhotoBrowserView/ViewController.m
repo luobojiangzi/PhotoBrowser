@@ -25,7 +25,7 @@ static NSString *ViewControllerCellRI = @"ViewControllerCellRI";
     
     [super viewDidLoad];
     
-    self.navigationItem.title = @"EasyPhotoBrowser";
+    self.navigationItem.title = @"SimplePhotoBrowser";
     
     UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
     flowLayout.minimumLineSpacing = 0;
