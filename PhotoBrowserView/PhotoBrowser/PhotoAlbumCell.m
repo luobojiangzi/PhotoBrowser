@@ -18,8 +18,8 @@
 
 -(instancetype)initWithFrame:(CGRect)frame{
     if (self = [super initWithFrame:frame]) {
-        self.contentView.backgroundColor = [UIColor blackColor];
-        UIButton *photoBtn = [[UIButton alloc] initWithFrame:CGRectMake(7, 0, frame.size.width, frame.size.height)];
+//        self.contentView.backgroundColor = [UIColor orangeColor];
+        UIButton *photoBtn = [[UIButton alloc] initWithFrame:CGRectMake(7, 0, frame.size.width-7, frame.size.height)];
         [photoBtn addTarget:self action:@selector(photo:) forControlEvents:UIControlEventTouchUpInside];
         photoBtn.imageView.contentMode = UIViewContentModeScaleAspectFit;
         [self.contentView addSubview:photoBtn];

@@ -28,7 +28,7 @@ static NSString *ViewControllerCellRI = @"ViewControllerCellRI";
     self.navigationItem.title = @"EasyPhotoBrowser";
     
     UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
-    flowLayout.minimumLineSpacing = 7;
+    flowLayout.minimumLineSpacing = 0;
     flowLayout.minimumInteritemSpacing = 0;
     flowLayout.sectionInset = UIEdgeInsetsMake(0, 0, 0, 7);
     flowLayout.itemSize = CGSizeMake((kWidth-7)/4, (kWidth-7)/4);

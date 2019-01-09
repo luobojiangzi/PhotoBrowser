@@ -28,6 +28,8 @@
 
 static NSString *PhotoBrowserViewCellRI = @"PhotoBrowserViewCellRI";
 
+#define imageRowCount 5
+
 @implementation PhotoBrowserView
 
 +(void)showWithCGRect:(CGRect)rect imageUrlArr:(NSArray *)imageUrlArr currentIndex:(NSInteger)currentIndex photoCallback:(removeAction)removeBlock{
@@ -190,11 +192,11 @@ static NSString *PhotoBrowserViewCellRI = @"PhotoBrowserViewCellRI";
     [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:page inSection:0] atScrollPosition:UICollectionViewScrollPositionLeft animated:YES];
     
 //    if (isLeftScroll) {
-//        if (page%4==0) {
+//        if (page%imageRowCount==0) {
 //            [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:page inSection:0] atScrollPosition:UICollectionViewScrollPositionLeft animated:YES];
 //        }
 //    } else {
-//        if ((page+1)%4==0||page%4==0) {
+//        if ((page+1)%imageRowCount==0||page%imageRowCount==0) {
 //            [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:page-3 inSection:0] atScrollPosition:UICollectionViewScrollPositionLeft animated:YES];
 //        }
 //    }
@@ -211,7 +213,7 @@ static NSString *PhotoBrowserViewCellRI = @"PhotoBrowserViewCellRI";
         self.currentIndex = indexPath.item;
         self.indexLabel.text = [NSString stringWithFormat:@"%zd/%zd",indexPath.item+1,self.imageUrlArr.count];
         [self.scrollView setContentOffset:CGPointMake(kWidth*indexPath.item, 0) animated:YES];
-        if (indexPath.item==self.imageUrlArr.count-1&&self.imageUrlArr.count%4) {
+        if (indexPath.item==self.imageUrlArr.count-1&&self.imageUrlArr.count%imageRowCount) {
             [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:indexPath.item inSection:0] atScrollPosition:UICollectionViewScrollPositionLeft animated:NO];
         }
     };
@@ -224,11 +226,11 @@ static NSString *PhotoBrowserViewCellRI = @"PhotoBrowserViewCellRI";
         flowLayout.minimumLineSpacing = 0;
         flowLayout.minimumInteritemSpacing = 0;
         flowLayout.sectionInset = UIEdgeInsetsMake(0, 0, 0, 7);
-        flowLayout.itemSize = CGSizeMake((kWidth)/4, (kWidth)/4);
+        flowLayout.itemSize = CGSizeMake((kWidth)/imageRowCount, (kWidth)/imageRowCount);
         flowLayout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
-        CGFloat marginx = (kHeight-48-NavBar_Height-kWidth-((kWidth)/4))*0.5;
-        NSLog(@"marginx=%f",marginx);
-        _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 48+NavBar_Height+kWidth+marginx, kWidth,(kWidth)/4) collectionViewLayout:flowLayout];
+        CGFloat marginx = (kHeight-48-NavBar_Height-kWidth-((kWidth)/imageRowCount))*0.5;
+        
+        _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 48+NavBar_Height+kWidth+marginx, kWidth,(kWidth)/imageRowCount) collectionViewLayout:flowLayout];
         _collectionView.pagingEnabled = YES;
         [_collectionView registerClass:[PhotoAlbumCell class] forCellWithReuseIdentifier:PhotoBrowserViewCellRI];
         _collectionView.delegate = self;//和self.scrollView冲突
