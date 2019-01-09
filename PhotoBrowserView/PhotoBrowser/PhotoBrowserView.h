@@ -12,7 +12,8 @@
 typedef void(^removeAction)(NSInteger index);
 
 @interface PhotoBrowserView : UIView
-/*  
+
+/*
 *   rect 点击图片在屏幕上的位置
 *   imageUrlArr 网络图片数组
 *   currentIndex 点击的第几个
